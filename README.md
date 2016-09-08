@@ -1,2 +1,5 @@
 # MyForum_NodeServer
-a simple socketserver
+学习过程的产物，一个简单的论坛
+# 功能实现
+### 1.简单论坛功能
+### 2.简单的聊天室功能
