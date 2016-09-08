@@ -3,4 +3,6 @@
 /// <reference path="globals/express/index.d.ts" />
 /// <reference path="globals/serve-static/index.d.ts" />
 /// <reference path="globals/socket.io/index.d.ts" />
+/// <reference path="globals/ejs/index.d.ts" />
 /// <reference path="modules/lodash/index.d.ts" />
+
