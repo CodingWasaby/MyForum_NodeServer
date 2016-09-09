@@ -7,6 +7,7 @@ var path = require('path');
 var ser = http.createServer(app);
 var io = require('socket.io')(ser);
 
+app.use(express.static(path.join(__dirname, 'public')));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', require('ejs').__express);
