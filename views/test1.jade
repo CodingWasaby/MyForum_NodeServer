@@ -4,7 +4,18 @@ block content
     h2= title
     p Welcome to #{title}
     p abc
-    input(type="checkbox", checked=false)
-    input(type="button" id="a" name="ff"  value="测试" onClick="abc()") 
-    button(onClick="test()") aa
-    
+
+    button.btn.btn-primary.btn-lg(type='button', data-toggle='modal', data-target='#myModal') Launch demo modal
+    // Modal
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal')
+              span(aria-hidden='true') &times;
+              span.sr-only Close
+            h4#myModalLabel.modal-title Modal title
+          .modal-body 这是一个测试弹出界面
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save changes
