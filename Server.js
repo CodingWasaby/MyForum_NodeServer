@@ -1,5 +1,4 @@
 /// <reference path=".\NodeSnippet\typings\index.d.ts" />
-
 var express = require('express');
 var app = express();
 var http = require('http');
@@ -32,5 +31,4 @@ var router = express.Router();
 router.get('/', function (req, res) {
     res.render('test1', { title: 'Express' });
 })
-
 app.use('/', router);

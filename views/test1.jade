@@ -1,25 +1,10 @@
-doctype html
-html
- head  
-  block scripts
-    script(src="/Scripts/jquery-3.1.0.min.js").   
-    script(type='text/javascript').
-          function test(){
-              console.log(1);
-              var tse = $('p'); 
-              console.log(tse);             
-          } 
-          function abc(){
-            alert("999");
-          }
-          
- body
-  block content
-    h1= title
+extends ./_Layout/_Layout.jade
+block content
+  #aa
+    h2= title
     p Welcome to #{title}
     p abc
     input(type="checkbox", checked=false)
     input(type="button" id="a" name="ff"  value="测试" onClick="abc()") 
     button(onClick="test()") aa
     
-

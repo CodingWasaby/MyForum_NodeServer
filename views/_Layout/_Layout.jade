@@ -1,0 +1,39 @@
+doctype html
+html 
+ head
+  block scripts
+   script(src="/Scripts/jquery-3.1.0.min.js")
+   script(src="/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js")
+   link(href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet")   
+   link(href="/css/site.css", rel="stylesheet")
+ body
+  div.navbar.navbar-inverse.navbar-fixed-top
+   div.container
+    div.navbar-header
+     a(href="#", title="MyForum").navbar-brand MyForum
+    div.navbar-collapse.collapse
+     ul.nav.navbar-nav
+      li
+       a(href="#", title="Home") Home
+      li
+       a(href="#", title="About") About
+      li
+       a(href="#", title="Contact") Contact
+      li
+       a(href="#", title="Test") Test
+  div.container.body-content
+   block content
+   hr 
+   footer
+    p &copy; 2016 - 论坛测试
+    
+
+
+      
+       
+  
+   
+   
+  
+      
+  
