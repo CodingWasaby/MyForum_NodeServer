@@ -8,18 +8,23 @@ html
    link(href="/css/site.css", rel="stylesheet")
    link(href="/css/layout.css", rel="stylesheet")   
    script.
-       $(function () {         
-          $("[data-toggle='popover']").popover(); 
+       $(function(){         
+          $("[data-toggle='popover']").popover({
+                  html:true,
+                  content: function() { 
+                      return $("#popover-content").html();
+                      }
+              }); 
           });
    
  body
   div.navbar.navbar-inverse.navbar-fixed-top
    div.container    
     div.navbar-header
-     img(src="https://avatars0.githubusercontent.com/u/10338045?v=3&s=40", alt="头像" ).img-circle.img-layout-test.img-responsive
+     img(src="https://avatars0.githubusercontent.com/u/10338045?v=3&s=40", alt="头像" data-toggle="popover" data-placement="bottom" ).img-circle.img-layout-test.img-responsive
      button(type="button" id="aa" data-container="body"
-      data-toggle="popover" data-placement="bottom" 
-      title="Vivamus" data-content!="<a>abc</a>").btn.btn-primary.btn-mylayout 提示信息（下）   
+      data-toggle="popover" data-placement="bottom"
+      title="Vivamus" ).btn.btn-primary.btn-mylayout 提示信息（下）   
        <span class="caret"></span>
  
     div.navbar-collapse.collapse
