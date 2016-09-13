@@ -2,7 +2,8 @@
 .img-layout-test{
         cursor:pointer;
         float:left;
-        margin:5px 10px 5px 5px ; 
+        margin:10px 10px 5px 5px ; 
+        max-height: 40px;
      } 
 
 .btn-mylayout{
@@ -11,6 +12,42 @@
        margin:10px 10px 5px 5px ;        
        height:30px;
      }
+.background-tm{
+   filter:alpha(opacity=50);
+   -moz-opacity:0.5;
+   -khtml-opacity: 0.5;
+   opacity: 0.5;
+}
+.float-mylayout-infeed{
+  float: left;
+  padding: 10px 10px 0px 10px;
+  height: 85px;
+}
+.float-mylayout-portrait{
+  float:top;
+  min-height:80px
+}
+.hr-mylayout{
+  margin-top:3px;
+  margin-bottom: 5px;
+}
+.list-mylayout{
+ margin-left: 10px;
+}
+.list-mylayout li{
+ margin-top: 3px;
+}
+.badge{ 
+ background-color:limegreen;
+ cursor:pointer;
+ margin: 5px ;
+}
+li{
+  list-style:none;
+}
+.navbar-brand-mylayout{
+  cursor:pointer;
+}
 
 /* 覆盖样式 */
 .popover{
