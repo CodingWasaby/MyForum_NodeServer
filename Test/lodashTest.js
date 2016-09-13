@@ -1,3 +1,4 @@
+/// <reference path="..\NodeSnippet\typings\index.d.ts" />
 var _ = require('lodash');
 var  saves  =  ['profile',  'settings'];
 var  done  =  _.after(saves.length,  function ()  {
