@@ -37,8 +37,13 @@
 .list-mylayout li{
  margin-top: 3px;
 }
-.badge{ 
+.badge-dep{ 
  background-color:limegreen;
+ cursor:pointer;
+ margin: 5px ;
+}
+.badge-comp{
+  background-color:red;
  cursor:pointer;
  margin: 5px ;
 }

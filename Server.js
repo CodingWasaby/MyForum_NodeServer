@@ -32,3 +32,5 @@ router.get('/', function (req, res) {
 })
 app.use('/', router);
 
+var uuid = require('node-uuid');
+console.log(uuid.v4());
