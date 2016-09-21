@@ -3,7 +3,7 @@ var config = require('../Config');
 var connectionPool = mysql.createPool(config.MySQL_Config);
 
 exports.Query = function (sql, parm, callBack, tran) {
-    var conn = connectionPool;
+    var conn = connectionPool;    
     if (tran != undefined)
         conn = tran;
     conn.query(sql, parm, function (err, results, fields) {

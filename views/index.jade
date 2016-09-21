@@ -1,0 +1,28 @@
+doctype html
+html 
+ head
+  block scripts
+   link(href='/css/bootstrap.min14ed.css?v=3.3.6', rel='stylesheet')
+   link(href='/css/font-awesome.min93e3.css?v=4.4.0', rel='stylesheet')
+   link(href='/css/animate.min.css', rel='stylesheet')
+   link(href='/css/style.min862f.css?v=4.1.0', rel='stylesheet')
+
+   script(src="/Scripts/jquery-3.1.0.min.js")
+   script(src="/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js")   
+   script(src='/Scripts/plugins/metisMenu/jquery.metisMenu.js')
+   script(src='/Scripts/plugins/slimscroll/jquery.slimscroll.min.js')
+   script(src='/Scripts/plugins/layer/layer.min.js')
+   script(src='/Scripts/hplus.min.js?v=4.1.0')
+   script(type='text/javascript', src='/Scripts/contabs.min.js')
+   script(src='/Scripts/plugins/pace/pace.min.js')
+
+ body(style="overflow:hidden").fixed-sidebar.full-height-layout.gray-bg
+  #wrapper
+   nav(role="navigation").navbar-default.navbar-static-side
+   #page-wrapper.gray-bg.dashbard-1  
+   #right-sidebar
+   .small-chat-box.fadeInRight.animated
+   #small-chat
+    span.badge.badge-warning.pull-right 5
+    a.open-small-chat
+     i.fa.fa-comments
