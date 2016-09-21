@@ -5,7 +5,9 @@
         margin:10px 10px 5px 5px ; 
         max-height: 40px;
      } 
-
+.img-index-head{
+  height: 65px;
+}
 .btn-mylayout{
        float: left;
        padding: 5px;
