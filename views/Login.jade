@@ -1,0 +1,17 @@
+extends ./_Layout/_Layout.jade
+block content 
+ script(src="/Scripts/Common/Login.js",type="text/javascript") 
+ .middle-box.text-center.loginscreen.animated.fadeInDown
+    div
+        div
+            h1.logo-name FM
+        h3 欢迎来到分众论坛
+        form.m-t
+            .form-group
+                input.form-control.required(type='text' , placeholder='用户名/邮箱/工号', required='' name='userName' id='userName')
+            .form-group
+                input.form-control.required(type='password', placeholder='密码', required='' name='password' id='password')
+            button.btn.btn-primary.block.full-width.m-b(type='button',onclick="login()" ) 登录
+            p.text-muted.text-center
+                a(href='#') 忘记密码？                 
+                a(href='#') 注册一个新号。 

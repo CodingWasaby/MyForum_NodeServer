@@ -1,12 +1,12 @@
 doctype html
 html 
  head
+  title #{title}
   block scripts
    link(href='/css/bootstrap.min14ed.css?v=3.3.6', rel='stylesheet')
    link(href='/css/font-awesome.min93e3.css?v=4.4.0', rel='stylesheet')
    link(href='/css/animate.min.css', rel='stylesheet')
    link(href='/css/style.min862f.css?v=4.1.0', rel='stylesheet')
-
    script(src="/Scripts/jquery-3.1.0.min.js")
    script(src="/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js")   
    script(src='/Scripts/plugins/metisMenu/jquery.metisMenu.js')
@@ -15,6 +15,11 @@ html
    script(src='/Scripts/hplus.min.js?v=4.1.0')
    script(type='text/javascript', src='/Scripts/contabs.min.js')
    script(src='/Scripts/plugins/pace/pace.min.js')
+   script(type='text/javascript', src='/Scripts/Common/index.js')
+   script.
+       $(function(){
+           $("img").attr("onerror","this.src='/image/pj1_60/pj1_60_1.png'");
+       })
 
  body(style="overflow:hidden").fixed-sidebar.full-height-layout.gray-bg
    #wrapper
@@ -27,11 +32,11 @@ html
                 li.nav-header
                     .dropdown.profile-element
                         span
-                            img.img-circle(alt='image', src='https://avatars0.githubusercontent.com/u/10338045?v=10&s=100' style="height:65px")
+                            img.img-circle(alt='image', src='https://avatars0.githubusercontent.com/u/10338045?v=10&s=65' style="height:65px")
                         a.dropdown-toggle(data-toggle='dropdown', href='#' aria-expanded="false")
                             span.clear
                                 span.block.m-t-xs
-                                    strong.font-bold Beaut-zihan
+                                    strong.font-bold wasaby
                                 span.text-muted.text-xs.block 超级管理员
                                     b.caret
                         ul.dropdown-menu.animated.fadeInRight.m-t-xs
@@ -46,23 +51,23 @@ html
                             li.divider
                             li
                                 a(href='login.html') 安全退出
-                    .logo-element h+
+                    .logo-element 分众
                 li
                     a(href='#')
                         i.fa.fa-home
-                        span.nav-label 主页
+                        span.nav-label 我的底盘
                         span.fa.arrow
                     ul.nav.nav-second-level
                         li
-                            a.J_menuItem(href='index_v1.html', data-index='0') &#x4E3B;&#x9875;&#x793A;&#x4F8B;&#x4E00;
+                            a.J_menuItem(href='/test1', data-index='0') 首页
                         li
-                            a.J_menuItem(href='index_v2.html') &#x4E3B;&#x9875;&#x793A;&#x4F8B;&#x4E8C;
+                            a.J_menuItem(href='index_v2.html') 我的待办
                         li
-                            a.J_menuItem(href='index_v3.html') &#x4E3B;&#x9875;&#x793A;&#x4F8B;&#x4E09;
+                            a.J_menuItem(href='index_v3.html') 我的Team
                         li
-                            a.J_menuItem(href='index_v4.html') &#x4E3B;&#x9875;&#x793A;&#x4F8B;&#x56DB;
+                            a.J_menuItem(href='index_v4.html') 我的关注
                         li
-                            a(href='index_v5.html', target='_blank') &#x4E3B;&#x9875;&#x793A;&#x4F8B;&#x4E94;
+                            a(href='http://www.focusmedia.cn/', target='_blank') 分众传媒
                 li
                     a.J_menuItem(href='layouts.html')
                         i.fa.fa-columns
@@ -340,7 +345,7 @@ html
                 .navbar-header
                     a.navbar-minimalize.minimalize-styl-2.btn.btn-primary(href='#')
                         i.fa.fa-bars
-                    form.navbar-form-custom(role='search', method='post', action='http://www.zi-han.net/theme/hplus/search_results.html')
+                    form.navbar-form-custom(role='search', method='post', action='#' onSubmit="return false;")
                         .form-group
                             input#top-search.form-control(type='text', placeholder='请输入您需要查找的内容 …', name='top-search')
                 ul.nav.navbar-top-links.navbar-right
@@ -405,7 +410,7 @@ html
                 i.fa.fa-backward
             nav.page-tabs.J_menuTabs
                 .page-tabs-content
-                    a.active.J_menuTab(href='javascript:;', data-id='index_v1.html') 首页
+                    a.active.J_menuTab(href='javascript:;', data-id='/test1') 首页
             button.roll-nav.roll-right.J_tabRight
                 i.fa.fa-forward
             .btn-group.roll-nav.roll-right
@@ -422,10 +427,10 @@ html
             a.roll-nav.roll-right.J_tabExit(href='login.html')
                 i.fa.fa.fa-sign-out 登出
         #content-main.row.J_mainContent
-            iframe.J_iframe(name='iframe0', width='100%', height='100%', src='index_v148b2.html?v=4.0', frameborder='0', data-id='index_v1.html', seamless='')
+            iframe.J_iframe(name='iframe0', width='100%', height='100%', src='/test1', frameborder='0', data-id='/test1', seamless)
         .footer
-            .pull-right
-                a(href='http://www.zi-han.net/', target='_blank') zihan's blog
+            .pull-right &copy; 2016-2017 
+                a(href='mailto:zhaoxi@framedia.net')  联系我
     // 右侧部分结束
     // 右侧边栏开始
     #right-sidebar

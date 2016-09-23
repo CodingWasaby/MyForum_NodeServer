@@ -1,54 +1,14 @@
 doctype html
-html 
- head
-  block scripts
-   script(src="/Scripts/jquery-3.1.0.min.js")
-   script(src="/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js")
-   link(href="/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css", rel="stylesheet")   
-   link(href="/css/site.css", rel="stylesheet")
-   link(href="/css/layout.css", rel="stylesheet")   
-   script.
-       $(function(){  
-          $("[data-toggle='popover']").popover({
-                  html:true,
-                  title:'张三 (F100000)',
-                  content: function() { 
-                      return $("#popover-content").html();
-                      }
-              }); 
-          });
-                  
- body
-  div.navbar.navbar-inverse.navbar-fixed-top
-   div.container    
-    div.navbar-header
-     img(src="https://avatars0.githubusercontent.com/u/10338045?v=10&s=100", alt="头像" data-toggle="popover" data-placement="bottom" onerror="this.src='/image/pj1_60/pj1_60_1.png'" ).img-circle.img-layout-test.img-responsive
-     a(style='margin:5px 5px 5px 10px').navbar-brand.navbar-brand-mylayout  我的首页
-     a(style='margin:5px 5px 5px 10px').navbar-brand.navbar-brand-mylayout  团结友爱
-     a(style='margin:5px 5px 5px 10px').navbar-brand.navbar-brand-mylayout  共同提高
-     a(style='margin:5px 5px 5px 10px').navbar-brand.navbar-brand-mylayout  给我拍砖    
-  div.container.body-content
-   block content
-   hr    
-   footer
-    p &copy; 2016 - 论坛测试   
-  div#popover-content(style='display:none;').container
-   div.float-mylayout-portrait   
-    img(src="https://avatars0.githubusercontent.com/u/10338045?v=3&s=100", alt="头像" style='max-height:70px;float:left' onerror="this.src='/image/pj1_60/pj1_60_1.png'" ).img-thumbnail
-    div.float-mylayout-infeed
-        span.badge.badge-comp 框架传媒
-        br
-        span.badge.badge-dep 研发部
-        hr.hr-mylayout 
-   div.float-mylayout-portrait    
-        ul(role="tablist" ).nav.nav-pills.nav-stacked 
-            li      
-             a(href="#", title="Home") Home
-            hr.hr-mylayout
-            li      
-             a(href="#", title="Home") Home
-            li      
-             a(href="#", title="Home") Home
-            hr.hr-mylayout
-            button.btn.btn-primary.btn-sm(type='button', data-toggle='modal', data-target='#myModal') 弹出测试1
-            button.btn.btn-primary.btn-sm(type='button', data-toggle='modal', data-target='#myModal' style='margin-left:10px') 弹出测试2
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title #{title}
+  link(href='/css/bootstrap.min14ed.css?v=3.3.6', rel='stylesheet')
+  link(href='/css/font-awesome.min93e3.css?v=4.4.0', rel='stylesheet')
+  link(href='/css/animate.min.css', rel='stylesheet')
+  link(href='/css/style.min862f.css?v=4.1.0', rel='stylesheet')
+  script(src="/Scripts/jquery-3.1.0.min.js")
+  script(src="/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js") 
+body.gray-bg 
+ block content
+   

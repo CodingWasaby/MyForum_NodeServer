@@ -4,6 +4,13 @@ var http = require('http');
 var path = require('path');
 var ser = http.createServer(app);
 var io = require('socket.io')(ser);
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 // view engine setup
@@ -26,14 +33,22 @@ io.on('connection', function (client) {
 });
 ser.listen(3000);
 
-var router = express.Router();
-router.get('/', function (req, res) {
-    res.render('test1', { title: 'Express' });
-})
-router.get('/index', function (req, res) {
-    res.render('index', { title: 'Express' });
-})
-app.use('/', router);
+var CommonRouter = require('./Router/CommonRouter');
+app.use('/', CommonRouter.router);
 
-var uuid = require('node-uuid');
-console.log(uuid.v4());
+app.use(function (req, res, next) {
+   var err = new Error('Not Found');
+   err.status = 404;
+   next(err);
+});
+
+app.use(function (err, req, res, next) {
+       res.status(err.status || 500);
+       res.render('error', {
+           message: err.message,
+           error: err
+       });
+   });
+
+// var uuid = require('node-uuid');
+// console.log(uuid.v4());
