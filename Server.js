@@ -52,3 +52,6 @@ app.use(function (err, req, res, next) {
 
 // var uuid = require('node-uuid');
 // console.log(uuid.v4());
+
+// var mail = require('./Tools/MailTools');
+// mail.sendTest();

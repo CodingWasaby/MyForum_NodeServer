@@ -25,8 +25,18 @@ exports.ResponseHeader_Default = {
 
 exports.CryptoParam = {
     algorithm: 'aes-256-cbc',
-    key: 'aska_Wasaby@hotmail.com'
+    key: 'zhaoxi@framedia.net'
 };
 
 exports.FilePath = './uploadFiles/';
 exports.XMLPath = './XMLFiles/';
+
+exports.MailConfig = {
+    host: 'mail.framedia.net',
+    port: 25,
+    auth: {
+        user: 'zhaoxi@framedia.net',
+        pass: '050902zx@'
+    }
+
+}
