@@ -8,9 +8,9 @@ block content
         h3 欢迎来到分众论坛
         form.m-t
             .form-group
-                input.form-control.required(type='text' , placeholder='用户名/邮箱/工号', required='' name='userName' id='userName')
+                input.form-control(type='text' , placeholder='用户名/邮箱/工号' name='userName' id='userName' valitype='required' valiName='用户名/邮箱/工号')
             .form-group
-                input.form-control.required(type='password', placeholder='密码', required='' name='password' id='password')
+                input.form-control(type='password', placeholder='密码' name='password' id='password' valitype='required' valiName='密码')
             button.btn.btn-primary.block.full-width.m-b(type='button',onclick="login()" ) 登录
         p.text-muted.text-center
                 a(data-toggle='modal', data-target='#myModal') 忘记密码？ 
@@ -26,7 +26,7 @@ block content
             h4#myModalLabel.modal-title 请输入您的邮箱地址
           .modal-body#bodys
            .input-group
-             input(type='text' placeholder='您注册的邮箱地址' id="mailName").form-control
+             input(type='text' placeholder='您注册的邮箱地址' id="mailName" valitype='required' valiName='邮箱地址').form-control
              span.input-group-addon @             
              .input-group-btn
                 button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown' id='at_adress'  atad="focusmedia.cn") focusmedia.cn 
@@ -37,5 +37,5 @@ block content
                     li
                         a(href='javascript:void(0)' onclick="dropdownClick('framedia.net')") framedia.net         
           .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal' id='cancel') 取消
+            button.btn.btn-default(type='button', data-dismiss='modal' id='cancel' onclick="validateView()") 取消
             button.btn.btn-primary(type='button' onclick="sendMail()") 发送邮件
