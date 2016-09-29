@@ -1,8 +1,3 @@
-// $(function () {
-//     $('[valitype]').blur(function () {
-//         validateView();
-//     })
-// })
 
 //提示信息
 function MessageShow(title, text, type, callback) {
@@ -16,26 +11,36 @@ function MessageShow(title, text, type, callback) {
     }, callback);
 }
 
-function validateView() {
-    var result = true;
-    $('[valitype]').each(function (index, ele) {
-        var valitype = $(ele).attr('valitype');
-        switch (valitype) {
-            case 'required':
-                $(ele).css('border-color', '#e5e6e7');
-                $(ele).attr('data-original-title',"");
-                var str = $(ele).val();
-                
-                if (str == null || $.trim(str) == "") {
-                    $(ele).css('border-color', 'red');
-                    $(ele).attr('data-toggle', 'tooltip');
-                    $(ele).attr('data-placement', 'left');
-                    $(ele).attr('data-original-title','请输入' + $(ele).attr('valiName'));
-                    $(ele).tooltip();
-                    result = false;
-                }
-                break;
-        }
-    });
-    return result;
+function validateView(id) {
+    if (id) {
+        return requiredVali('#' + id);
+    }
+    else {
+        var result = true;
+        $('[valitype]').each(function (index, ele) {
+            var valitype = $(ele).attr('valitype');
+            switch (valitype) {
+                case 'required':
+                    var r = requiredVali(this)
+                    result = result ? r : result;
+                    break;
+            }
+        });
+        return result;
+    }
+}
+
+function requiredVali(selector) {
+    $(selector).css('border-color', '#e5e6e7');
+    $(selector).attr('data-original-title', "");
+    var str = $(selector).val();
+    if (str == null || $.trim(str) == "") {
+        $(selector).css('border-color', 'red');
+        $(selector).attr('data-toggle', 'tooltip');
+        $(selector).attr('data-placement', 'left');
+        $(selector).attr('data-original-title', '请输入' + $(selector).attr('valiName'));
+        $(selector).tooltip();
+        return false;
+    }
+    return true;
 }

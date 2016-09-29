@@ -3,7 +3,7 @@ var config = require('../Config');
 var connectionPool = mysql.createPool(config.MySQL_Config);
 
 exports.Query = function (sql, parm, callBack, tran) {
-    var conn = connectionPool;    
+    var conn = connectionPool;
     if (tran != undefined)
         conn = tran;
     conn.query(sql, parm, function (err, results, fields) {
@@ -77,6 +77,19 @@ exports.getConnection = function (callBack) {
         }
         callBack(conn);
     });
+}
+
+
+exports.temasd = function (aa) {
+    connectionPool.getConnection(function (err, conn) {
+        conn.query('SELECT 1; SELECT 2', function (err, results) {
+            if (err) throw err;
+
+            // `results` is an array with one element for every statement in the query:
+            console.log(results[0]); // [{1: 1}]
+            console.log(results[1]); // [{2: 2}]
+        });
+    })
 }
 
 //dbConn.getConnection(function (conn) {

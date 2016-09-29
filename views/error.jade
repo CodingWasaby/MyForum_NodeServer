@@ -4,7 +4,11 @@ block content
     if (error.status == 404)
       h1 #{error.status}
       h3.font-bold #{error.status} ：页面未找到！
-      .error-desc 抱歉，页面好像去火星了~      
+      .error-desc 抱歉，页面好像去火星了~  
+    else if (error.status == 410)  
+      h1 #{error.status}
+      h3.font-bold #{error.status} ：链接已经失效！
+      .error-desc 抱歉，您请求的链接已经失效~ 
     else
       h1 500
       h3.font-bold 服务器内部错误！

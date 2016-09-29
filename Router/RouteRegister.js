@@ -1,25 +1,23 @@
 var crypto = require('../Tools/CryptoTools');
 
 function registeAll(app) {
-
     /*登录验证*/
     app.use(function (req, res, next) {
-        if (req.method == "POST") {
-            next();
-            return;
-        }
-        var url = req.originalUrl;
-        if (url != "/login" && url != "/ChangePass") {
-            if (!req.cookies.loginUser)
-                return res.redirect("/login");
-
+        var urlpath = req._parsedUrl.pathname.toUpperCase();
+        if (urlpath != "/Login".toUpperCase() && urlpath != '/ChangePassword'.toUpperCase() && req.method != "POST") {
+            if (!req.cookies.loginUser.LoginName) {
+                res.redirect("/Login");
+                return;
+            }
             var loginUser = req.cookies.loginUser;
             var CreateTime = new Date(parseInt(crypto.decrypt(loginUser.flag)));
             var timeSpan = Date.now() - CreateTime;
+            var numb = (timeSpan / (1000 * 60 * 60 * 24));
             //超过一天需要重新登录
-            if (parseInt(timeSpan / (1000 * 60 * 60 * 24)) > 0) {
-                req.cookies.loginUser = null;
-                return res.redirect("/login");
+            if (numb > 1) {
+                res.cookies('loginUser',{});
+                res.redirect("/login");
+                return;
             }
             loginUser.flag = crypto.encrypt(Date.now().toString());
             res.cookie('loginUser', loginUser);

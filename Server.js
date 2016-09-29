@@ -32,14 +32,7 @@ io.on('connection', function (client) {
 });
 ser.listen(3000);
 
-
-
-
-
-
-
 // var uuid = require('node-uuid');
 // console.log(uuid.v4());
 
-// var mail = require('./Tools/MailTools');
-// mail.sendTest();
+

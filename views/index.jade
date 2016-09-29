@@ -49,7 +49,7 @@ html
                                 a.J_menuItem(href='mailbox.html') 信箱
                             li.divider
                             li
-                                a(href='login.html') 安全退出
+                                a(href='/login?u=true') 安全退出
                     .logo-element 分众
                 li
                     a(href='#')
@@ -423,7 +423,7 @@ html
                         a 关闭全部选项卡
                     li.J_tabCloseOther
                         a 关闭其他选项卡
-            a.roll-nav.roll-right.J_tabExit(href='login.html')
+            a.roll-nav.roll-right.J_tabExit(href='/login?u=true')
                 i.fa.fa.fa-sign-out 登出
         #content-main.row.J_mainContent
             iframe.J_iframe(name='iframe0', width='100%', height='100%', src='/test1', frameborder='0', data-id='/test1', seamless)

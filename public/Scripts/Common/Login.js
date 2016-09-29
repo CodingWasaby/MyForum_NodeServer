@@ -1,5 +1,5 @@
 function login() {
-    if (validateView()) {
+    if (validateView('userName') && validateView('password')) {
         $.ajax({
             url: '/LoginSubmit',
             type: 'POST',
@@ -13,7 +13,7 @@ function login() {
                     window.location.href = '/Index';
                 }
                 else {
-                    alert('false');
+                    MessageShow("登录失败", "请确认你输入的信息是否正确！", "warning")
                 }
             }
         })
@@ -27,7 +27,7 @@ function dropdownClick(str) {
 }
 
 function sendMail() {
-    if (validateView()) {
+    if (validateView('mailName')) {
         var atad = $('#at_adress').attr('atad');
         var mailName = $('#mailName').val();
         $.ajax({

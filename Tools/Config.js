@@ -1,10 +1,11 @@
 exports.MySQL_Config = {
-    connectionLimit: 10,
+    connectionLimit: 50,
     host: 'localhost',
     user: 'aska',
     password: 'aska201228',
     database: 'FMDSTest',
-    waitForConnections: true
+    waitForConnections: true,
+    multipleStatements: true
 };
 exports.MSSQL_Config = {
     user: 'sa',
