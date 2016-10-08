@@ -1,0 +1,106 @@
+extends ../_Layout/_Layout.jade
+block content 
+ script(src="/Scripts/jquery-ui-1.10.4.min.js")
+ script(src="/Scripts/content.min.js?v=1.0.0")
+ script.
+  $(document).ready(function(){$(".sortable-list").sortable({connectWith:".connectList"}).disableSelection()});
+ .wrapper.wrapper-content.animated.fadeInRight
+    .row
+     .col-sm-12
+        .ibox.float-e-margins
+            .ibox-content
+              form.form-horizontal
+               .form-group
+                    label.col-sm-1.control-label 模板名称:
+                    .col-sm-4
+                      input(type='text').form-control
+                    label.col-sm-1.control-label 模板名称:
+                    .col-sm-4
+                      input(type='text').form-control
+               .hr-line-dashed
+               .form-group
+                    label.col-sm-1.control-label 模板名称:
+                    .col-sm-4
+                      input(type='text').form-control
+                    label.col-sm-1.control-label 模板名称:
+                    .col-sm-4
+                      input(type='text').form-control
+               .hr-line-dashed
+    .row
+        .col-sm-6
+            .ibox
+                .ibox-content                   
+                    h3 已选任务列表
+                    p.small 
+                        i.fa.fa-hand-o-up 
+                        span(style='padding-left:5px') 在列表间拖动任务面板 
+                    ul.sortable-list.connectList.agile-list
+                        li.warning-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x7B7E;
+                                i.fa.fa-clock-o
+                        li.success-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x8BB0;
+                                i.fa.fa-clock-o
+                        li.info-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x8BB0;
+                                i.fa.fa-clock-o
+                        li.danger-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-primary(href='#') &#x786E;&#x5B9A;
+                                i.fa.fa-clock-o
+                        li.warning-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x7B7E;
+                                i.fa.fa-clock-o
+                        li.warning-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-primary(href='#') &#x786E;&#x5B9A;
+                                i.fa.fa-clock-o
+                        li.success-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x8BB0;
+                                i.fa.fa-clock-o
+                        li.info-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x8BB0;
+                                i.fa.fa-clock-o
+        .col-sm-6
+            .ibox
+                .ibox-content
+                    h3 待选任务列表
+                    p.small
+                        i.fa.fa-hand-o-up
+                        span(style='padding-left:5px') 在列表间拖动任务面板
+                    ul.sortable-list.connectList.agile-list
+                        li.success-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x7B7E;
+                                i.fa.fa-clock-o
+                        li.success-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x8BB0;
+                                i.fa.fa-clock-o
+                        li.warning-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x8BB0;
+                                i.fa.fa-clock-o
+                        li.warning-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x7B7E;
+                                i.fa.fa-clock-o
+                        li.info-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-primary(href='#') &#x786E;&#x5B9A;
+                                i.fa.fa-clock-o
+                        li.success-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x8BB0;
+                                i.fa.fa-clock-o
+                        li.danger-element
+                            .agile-detail
+                                a.pull-right.btn.btn-xs.btn-white(href='#') &#x6807;&#x8BB0;
+                                i.fa.fa-clock-o
+    

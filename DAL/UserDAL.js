@@ -46,7 +46,11 @@ function GetUserByEmail(Email, callback) {
                 WHERE
                     Email = ? AND IsDelete = 0 ` ;
     mysql.Query(sql, [Email], function (rows) {
-        callback(rows.length > 0, rows[0].UserKey, rows[0].Password);
+        if (rows.length > 0) {
+            callback(rows.length > 0, rows[0].UserKey, rows[0].Password);
+        } else {
+            callback(false);
+        }
     })
 }
 

@@ -5,7 +5,7 @@ function registeAll(app) {
     app.use(function (req, res, next) {
         var urlpath = req._parsedUrl.pathname.toUpperCase();
         if (urlpath != "/Login".toUpperCase() && urlpath != '/ChangePassword'.toUpperCase() && req.method != "POST") {
-            if (!req.cookies.loginUser.LoginName) {
+            if (!req.cookies.loginUser) {
                 res.redirect("/Login");
                 return;
             }
@@ -15,7 +15,7 @@ function registeAll(app) {
             var numb = (timeSpan / (1000 * 60 * 60 * 24));
             //超过一天需要重新登录
             if (numb > 1) {
-                res.cookies('loginUser',{});
+                res.clearCookie('loginUser');
                 res.redirect("/login");
                 return;
             }
@@ -28,6 +28,9 @@ function registeAll(app) {
 
     var CommonRouter = require('./CommonRouter');
     app.use('/', CommonRouter.router);
+
+    var WorkflowRouter = require('./WorkflowRouter');
+    app.use('/Workflow/', WorkflowRouter.router);
 
 
     /*异常处理*/

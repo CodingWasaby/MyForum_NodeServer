@@ -13,7 +13,7 @@ router.get('/Index', function (req, res) {
 
 router.get('/Login', function (req, res) {
     if (req.query.u) {
-        res.cookie("loginUser", {});
+        res.clearCookie("loginUser");
     }
     res.render('Login', { title: '登录' });
 });
@@ -43,7 +43,7 @@ router.get('/ChangePassword', function (req, res) {
         var user = userDAL();
         //判断是否修改过密码
         user.GetUserByKey(userKey, function (result) {
-            if (result) {
+            if (result.Password === password) {
                 res.render('ChangePassword', { title: '重置密码', userKey: userKey, Password: result.Password });
             }
             else {

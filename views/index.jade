@@ -15,6 +15,7 @@ html
    script(src='/Scripts/hplus.min.js?v=4.1.0')
    script(type='text/javascript', src='/Scripts/contabs.min.js')
    script(src='/Scripts/plugins/pace/pace.min.js')
+   script(src="/Scripts/jquery.cookie.js")
    script.
        $(function(){
            $("img").attr("onerror","this.src='/image/pj1_60/pj1_60_1.png'");
@@ -64,13 +65,13 @@ html
                         li
                             a.J_menuItem(href='index_v3.html') 我的Team
                         li
-                            a.J_menuItem(href='index_v4.html') 我的关注
+                            a.J_menuItem(href='/workflow/editworkflow') 我的关注
                         li
                             a(href='http://www.focusmedia.cn/', target='_blank') 分众传媒
                 li
-                    a.J_menuItem(href='layouts.html')
+                    a.J_menuItem(href='/workflow/editworkflow')
                         i.fa.fa-columns
-                        span.nav-label &#x5E03;&#x5C40;
+                        span.nav-label 工作流设计
                 li
                     a(href='#')
                         i.fa.fa.fa-bar-chart-o
