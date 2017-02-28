@@ -2,11 +2,23 @@ var mysql = require('mysql');
 var config = require('../Config');
 var connectionPool = mysql.createPool(config.MySQL_Config);
 
-exports.Query = function (sql, parm, callBack, tran) {
+exports.Query = query;
+
+function query(sql, parm, callBack, tran) {
     var conn = connectionPool;
     if (tran != undefined)
         conn = tran;
-    conn.query(sql, parm, function (err, results, fields) {
+
+    var parmArray = [];
+    var setSql = '';
+    for (var n in parm) {
+        setSql += ' set @' + n + '= ?;';
+        parmArray.push(parm[n]);
+    }
+    setSql += ' SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;';
+    sql = setSql + sql + ' commit;';
+
+    conn.query(sql, parmArray, function (err, results, fields) {
         if (err) {
             if (tran != undefined) {
                 tran.rollback();
@@ -14,7 +26,45 @@ exports.Query = function (sql, parm, callBack, tran) {
             throw err;
         };
         if (callBack != undefined) {
-            callBack(results);
+            callBack(results[results.length - 2]);
+        }
+    });
+}
+
+exports.PageQuery = function (sql, parm, page, callBack) {
+    parm.pageIndex = page.pageIndex;
+    parm.pageSize = page.pageSize;
+    var pageSql = '';
+    if (page.Order) {
+        pageSql += ' ORDER BY ' + page.Order;
+    }
+    if (page.Desc) {
+        pageSql += page.Desc;
+    }
+    pageSql += ` LIMIT (@pageIndex-1)*@pageSize,@pageSize ;`;
+    sql += pageSql;
+
+    var conn = connectionPool;
+    var parmArray = [];
+    var setSql = '';
+    for (var n in parm) {
+        setSql += ' set @' + n + '= ?;';
+        parmArray.push(parm[n]);
+    }
+    setSql += ' SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;';
+    sql = setSql + sql + ' commit;';
+
+    conn.query(sql, parmArray, function (err, results, fields) {
+        if (err) {
+            if (tran != undefined) {
+                tran.rollback();
+            }
+            throw err;
+        };
+        if (callBack != undefined) {
+            var total = results[results.length - 3][0].total;
+            var pageInfo = SetThePage(page, total);
+            callBack(results[results.length - 2], pageInfo);
         }
     });
 };
@@ -23,7 +73,16 @@ exports.Execute = function (sql, parm, callBack, tran) {
     var conn = connectionPool;
     if (tran != undefined)
         conn = tran;
-    conn.query(sql, parm, function (err, results) {
+
+    var parmArray = [];
+    var setSql = '';
+    for (var n in parm) {
+        setSql += ' set @' + n + '= ?;';
+        parmArray.push(parm[n]);
+    }
+    sql = setSql + sql;
+
+    conn.query(sql, parmArray, function (err, results) {
         if (err) {
             if (tran != undefined) {
                 tran.rollback();
@@ -31,7 +90,7 @@ exports.Execute = function (sql, parm, callBack, tran) {
             throw err;
         };
         if (callBack != undefined) {
-            callBack(results);
+            callBack(results[results.length - 1]);
         }
     });
 }
@@ -79,24 +138,12 @@ exports.getConnection = function (callBack) {
     });
 }
 
-
-exports.temasd = function (aa) {
-    connectionPool.getConnection(function (err, conn) {
-        conn.query('SELECT 1; SELECT 2', function (err, results) {
-            if (err) throw err;
-
-            // `results` is an array with one element for every statement in the query:
-            console.log(results[0]); // [{1: 1}]
-            console.log(results[1]); // [{2: 2}]
-        });
-    })
+function SetThePage(page, total) {
+    page.tatol = total;
+    page.pageCount = total / page.pageSize;
+    if (total % page.pageSize > 0)
+        page.pageCount++;
+    return page;
 }
 
-//dbConn.getConnection(function (conn) {
-//    conn.beginTransaction(function (err) {
-//        var b = dbConn.Query("select  * from best4_ever.ClassMate LIMIT 0, 1", null, test, conn);
-//        var c = dbConn.Execute("DELETE FROM best4_ever.ClassMate WHERE classmateid = 0", null, test, conn);
-//    });
-//    conn.release();
-//});
 

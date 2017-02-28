@@ -3,7 +3,7 @@ exports.MySQL_Config = {
     host: 'localhost',
     user: 'aska',
     password: 'aska201228',
-    database: 'FMDSTest',
+    database: 'Myfr',
     waitForConnections: true,
     multipleStatements: true
 };

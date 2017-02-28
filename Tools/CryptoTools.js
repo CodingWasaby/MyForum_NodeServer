@@ -16,3 +16,13 @@ exports.decrypt = function (crypted, algorithm) {
     dec += decipher.final('utf8');
     return dec;
 };
+
+exports.getuuid = function (uuidType) {
+    var uuid = require('node-uuid');
+    if (uuidType == 'v1') {
+        return uuid.v1();
+    }
+    else{
+        return uuid.v4();
+    }
+}

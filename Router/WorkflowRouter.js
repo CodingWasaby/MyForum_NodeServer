@@ -5,5 +5,9 @@ var config = require('../Tools/Config');
 exports.router = router;
 
 router.get('/EditWorkflow', function (req, res) {
-    res.render('workflow/EditWorkflow', { title: '设计工作流' });
+    res.render('workflow/EditWorkflow');
+});
+
+router.get('/WorkflowList', function (req, res) {
+    res.render('workflow/WorkflowList');
 });

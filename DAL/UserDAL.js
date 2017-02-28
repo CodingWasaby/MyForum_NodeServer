@@ -10,9 +10,9 @@ module.exports = function () {
     return obj;
 }
 
+//人员登录
 function UserLogin(user, callback) {
-    var sql = `set @loginName= ?;
-                SELECT 
+    var sql = ` SELECT 
                     COUNT(1) num,
                     Email,
                     HeadPic,
@@ -30,22 +30,23 @@ function UserLogin(user, callback) {
                         OR user.Email = @loginName
                         OR user.NickName = @loginName
                         OR user.UserKey = @loginName)
-                        AND user.Password = ?
-                        AND IsDelete = 0 ` ;
-    var param = [user.UserNo, user.Password];
+                        AND user.Password = @Password
+                        AND IsDelete = 0 ;` ;
+    var param = { loginName: user.UserNo, Password: user.Password };
     mysql.Query(sql, param, function (rows) {
-        callback(rows[1][0].num > 0, rows[1][0]);
+        callback(rows[0].num > 0, rows[0]);
     });
 }
 
+//检查邮件地址
 function GetUserByEmail(Email, callback) {
     var sql = `SELECT 
                     user.UserKey, user.NickName, user.Password, user.Email
                 FROM
                     MyFr.user
                 WHERE
-                    Email = ? AND IsDelete = 0 ` ;
-    mysql.Query(sql, [Email], function (rows) {
+                    Email = @Email AND IsDelete = 0 ` ;
+    mysql.Query(sql, { Email: Email }, function (rows) {
         if (rows.length > 0) {
             callback(rows.length > 0, rows[0].UserKey, rows[0].Password);
         } else {
@@ -54,25 +55,27 @@ function GetUserByEmail(Email, callback) {
     })
 }
 
+//获取人员BY KEY
 function GetUserByKey(key, callback) {
     var sql = `SELECT 
                     user.UserKey, user.NickName, user.Password, user.Email
                 FROM
                     MyFr.user
                 WHERE
-                    UserKey = ? AND IsDelete = 0 ` ;
-    mysql.Query(sql, [key], function (rows) {
+                    UserKey = @UserKey AND IsDelete = 0 ` ;
+    mysql.Query(sql, { UserKey: key }, function (rows) {
         callback(rows[0]);
     })
 }
 
+//更新密码
 function UpdatePassword(UserKey, Password, callback) {
     var sql = `UPDATE MyFr.user 
                     SET 
-                        Password = ?
+                        Password = @Password
                     WHERE
-                        UserKey = ? ` ;
-    mysql.Execute(sql, [Password, UserKey], function (result) {
+                        UserKey = @UserKey ` ;
+    mysql.Execute(sql, { Password: Password, UserKey: UserKey }, function (result) {
         callback(result.changedRows > 0);
     })
 }
